@@ -1,6 +1,43 @@
-apply from: 'https://raw.githubusercontent.com/soarcn/gradle/master/android-library.gradle'
-apply from: 'https://raw.githubusercontent.com/soarcn/gradle/master/maven_push.gradle'
+plugins {
+    id 'com.android.library'
+    id 'maven-publish'
+}
+
+def group = 'com.github.zhwanng'
+def libVersion = "1.5.1"
+def libCode = 100
+
+
+android {
+    compileSdkVersion rootProject.ext.compileSdkVersion
+
+    defaultConfig {
+        minSdk rootProject.ext.minSdkVersion
+        targetSdk rootProject.ext.targetSdkVersion
+        versionCode libCode
+        versionName libVersion
+    }
+
+    // 使用 JDK 11
+    compileOptions {
+        targetCompatibility JavaVersion.VERSION_11
+        sourceCompatibility JavaVersion.VERSION_11
+    }
+}
+
+afterEvaluate {
+    publishing {
+        publications {
+            release(MavenPublication) {
+                from components.release
+                groupId = group
+                artifactId = 'BottomSheet'
+                version = libVersion
+            }
+        }
+    }
+}
 
 dependencies {
-    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation "androidx.appcompat:appcompat:$rootProject.ext.appcompat"
 }
