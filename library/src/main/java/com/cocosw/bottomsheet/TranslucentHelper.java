@@ -66,8 +66,7 @@ class TranslucentHelper {
         }
 
         mSmallestWidthDp = getSmallestWidthDp(wm);
-        if (mNavBarAvailable)
-            setTranslucentStatus(true);
+        if (mNavBarAvailable) setTranslucentStatus(true);
         mStatusBarHeight = getInternalDimensionSize(context.getResources(), STATUS_BAR_HEIGHT_RES_NAME);
     }
 
@@ -84,8 +83,7 @@ class TranslucentHelper {
 
         win.setAttributes(winParams);
         // instance
-        win.setFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION,
-                WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
+        win.setFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION, WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
     }
 
     private float getSmallestWidthDp(WindowManager wm) {
@@ -110,8 +108,7 @@ class TranslucentHelper {
                 if (mInPortrait) {
                     key = NAV_BAR_HEIGHT_RES_NAME;
                 } else {
-                    if (!isNavigationAtBottom())
-                        return 0;
+                    if (!isNavigationAtBottom()) return 0;
                     key = NAV_BAR_HEIGHT_LANDSCAPE_RES_NAME;
                 }
                 return getInternalDimensionSize(res, key);
