@@ -4,8 +4,8 @@ plugins {
 }
 
 def group = 'com.github.zhwanng'
-def libVersion = "1.5.1"
-def libCode = 100
+def libVersion = "1.5.2"
+def libCode = 101
 def artifactName = 'BottomSheet'
 
 
